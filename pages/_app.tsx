@@ -1,8 +1,9 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@mui/material'
 import { theme } from '../theme'
-
+import '../styles/globals.css'
+import '@fullcalendar/common/main.css'
+import '@fullcalendar/daygrid/main.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
