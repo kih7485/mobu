@@ -1,31 +1,50 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import { Stack, Button } from '@mui/material'
-import Header from '../components/Header'
-
-const Home: NextPage = () => {
-  return (
-    <>
-    <Header/>
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+import { useEffect, useState } from "react";
+import FullCalendar, { DatesSetArg, EventInput } from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import "@fullcalendar/common/main.css";
+import "@fullcalendar/daygrid/main.css";
+import { Box, Container } from "@mui/material";
+import { NextPage } from "next";
+import getAptSales from './api/aptSale';
+import { useQuery } from "@tanstack/react-query";
  
-        <Stack spacing={2} direction="row">
-          <Button variant="text">Text</Button>
-          <Button variant="contained">Contained</Button>
-          <Button variant="outlined">Outlined</Button>
-        </Stack>
-        ...
-      </main>
-      ...
-    </div>
-    </>
-  )
-}
+const Home: NextPage = () => {
+  const [events, setEvents] = useState<EventInput[]>([
+    { title: "initial event1", start: new Date() }, 
+  ]);  
+  const { isLoading, isError, data, error }: any = useQuery(['aptSales'], getAptSales);
+  
+  if (isLoading) {
+    return <span>Loading...</span>
+  }
 
-export default Home
+  if (isError) {
+    return <span>Error: {error.message}</span> 
+  }
+  // if (data) {
+  //   setSalesApt(data.data);
+  // }
+
+  console.log(data, "data");
+  // const query = useQuery(['home'], getAptSales);  
+  // const [aptSales, setAptSales] = useState(data?.data); 
+  
+    return ( 
+      <>
+         
+        <Container maxWidth="xl">
+          <FullCalendar
+            plugins={[dayGridPlugin]}
+            events={data} 
+            contentHeight={700}
+            datesSet={(arg: DatesSetArg) => {
+                setEvents([...events, { title: "additional", start: arg.start }]);
+                }}
+            />
+        </Container>
+    
+      </>
+  );
+};
+
+export default Home;

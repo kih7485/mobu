@@ -1,8 +1,13 @@
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@mui/material'
-import { theme } from '../theme'
-import { QueryClient, QueryClientProvider } from "react-query";
+import { theme } from '../theme';
 import { RecoilRoot } from 'recoil';
+import Header from '../components/Header';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
 import '../styles/globals.css'
 import '@fullcalendar/common/main.css'
 import '@fullcalendar/daygrid/main.css'
@@ -15,6 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
+          <Header/>
           <Component {...pageProps} />
         </ThemeProvider>
       </QueryClientProvider>
