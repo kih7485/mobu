@@ -3,10 +3,6 @@ import FullCalendar, { EventApi, DateSelectArg, EventClickArg, EventContentArg, 
 import dayGridPlugin from '@fullcalendar/daygrid'
 import { INITIAL_EVENTS, createEventId } from '../util/calendarUtil'
 
-import '@fullcalendar/common/main.css'
-import '@fullcalendar/daygrid/main.css'
-import '@fullcalendar/timegrid/main.css'
-import '../global-styles.css' 
 
 interface DemoAppState {
   weekendsVisible: boolean

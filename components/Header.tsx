@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['청약일정', '통계']; 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const ResponsiveAppBar = () => {
