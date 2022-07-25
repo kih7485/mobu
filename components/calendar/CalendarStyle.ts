@@ -1,4 +1,3 @@
-// import { experimentalStyled as styled, alpha } from '@material-ui/core/styles';
 import { experimentalStyled as styled, alpha } from '@mui/material/styles';
 
 // ----------------------------------------------------------------------
@@ -41,8 +40,9 @@ const CalendarStyle = styled('div')(({ theme }) => ({
     padding: '2px 4px',
     borderRadius: 4,
     backgroundColor: theme.palette.common.white,
+    // color:'#000000',
     transition: theme.transitions.create('filter'),
-    '&:hover': { filter: 'brightness(0.92)' },
+    '&:hover': { filter: 'brightness(0.92)' }, 
     '&:before,&:after': {
       top: 0,
       left: 0,
