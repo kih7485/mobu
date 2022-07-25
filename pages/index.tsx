@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import FullCalendar, { DatesSetArg, EventInput } from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid"; 
-// import "@fullcalendar/common/main.css";
-// import "@fullcalendar/daygrid/main.css";
 import { Box, Container } from "@mui/material";
 import { NextPage } from "next";
 import getAptSales from './api/aptSale';
