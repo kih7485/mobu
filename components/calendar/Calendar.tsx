@@ -1,7 +1,7 @@
 import React from 'react'
 import FullCalendar, { EventApi, DateSelectArg, EventClickArg, EventContentArg, formatDate } from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
-import { INITIAL_EVENTS, createEventId } from '../util/calendarUtil'
+import { INITIAL_EVENTS, createEventId } from '../../util/calendarUtil'
 
 
 interface DemoAppState {
@@ -28,6 +28,7 @@ export default class DemoApp extends React.Component<{}, DemoAppState> {
               center: 'title',
               right: 'dayGridMonth,timeGridWeek,timeGridDay'
             }}
+            locale='ko' 
             initialView='dayGridMonth'
             editable={true}
             selectable={true}
