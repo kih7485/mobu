@@ -4,36 +4,36 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import { Box, Container } from "@mui/material";
 import { NextPage } from "next";
 import getAptSales, {getAPTLttotPblancDetail} from './api/aptSale';
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueries } from "@tanstack/react-query";
 import CalendarStyle from "../components/calendar/CalendarStyle";
 import APTLttotPblancDetail from "../types/APTLttotPblancDetail";
-import { AxiosError } from "axios";
+import getUrbtyOfctlLttotPblancDetail from "./api/officetels";
+import UrbtyOfctlLttotPblancDetail from "../types/UrbtyOfctlLttotPblancDetail";
 
 interface Props {
   type: string,
-  data: APTLttotPblancDetail[] 
+  data: APTLttotPblancDetail[] | UrbtyOfctlLttotPblancDetail[]
 } 
  
 const Home: NextPage = () => { 
   const [events, setEvents] = useState<EventInput[]>([
     { title: "initial event1", start: new Date() }, 
-  ]);  
-  const { isLoading, isError, data, error } = useQuery<Props, AxiosError, Props>(['getAPTLttotPblancDetail'], getAPTLttotPblancDetail);
-   
-  if (isLoading) {
-    return <span>Loading...</span> 
-  } 
+  ]);
+  const [events2, setEvents2] = useState<any[]>([]);
+  
+  const results = useQueries({
+    queries: [
+      { queryKey: ['getAPTLttotPblancDetail'], queryFn: getAPTLttotPblancDetail},
+      { queryKey: ['getUrbtyOfctlLttotPblancDetail'], queryFn: getUrbtyOfctlLttotPblancDetail}
+    ] 
+  })
 
-  if (isError) {
-    return <span>Error: {error.message}</span> 
-  }
-  // if (data) {
-  //   setSalesApt(data.data);
-  // }
-
-  console.log(data, "data");
-  // const query = useQuery(['home'], getAptSales);  
-  // const [aptSales, setAptSales] = useState(data?.data); 
+  const eventList = results.map(result => result.data)
+  // console.log(eventList, "eventList"); 
+  // useEffect(() => {
+  //   setEvents2(eventList);
+  
+  // }, []);
   
     return ( 
       <>
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
             <FullCalendar
               plugins={[dayGridPlugin]}
               locale={'ko'}
-              events={data.data} 
+              // events={events2} 
               contentHeight={700}
               datesSet={(arg: DatesSetArg) => {
                   setEvents([...events, { title: "additional", start: arg.start }]);
