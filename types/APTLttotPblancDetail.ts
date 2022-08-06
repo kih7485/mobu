@@ -16,7 +16,7 @@ export default interface APTLttotPblancDetail  {
     SUBSCRPT_AREA_CODE_NM: string, //공급지역명
     HSSPLY_ZIP: string,  //공급위치 우편번호
     HSSPLY_ADRES: string, //공급위치
-    TOT_SUPLY_HSHLDCO: number,  //공급규모
+    TOT_SUPLY_HSHLDCO: number,  //공급규모 
     RCRIT_PBLANC_DE: string,    //모집공고일 (YYYY-MM-DD)
     RCEPT_BGNDE: string,    //청약접수시작일
     RCEPT_ENDDE: string,    //청약접수종료일

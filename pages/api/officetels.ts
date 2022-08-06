@@ -7,8 +7,8 @@ interface Props {
   data: UrbtyOfctlLttotPblancDetail[]
 }
 
-export default function getUrbtyOfctlLttotPblancDetail(): Props | any {
-  return axios.get(API_URL+"getUrbtyOfctlLttotPblancDetail",
+export default function getUrbtyOfctlLttotPblancDetail() {
+  return axios.get<Props>(API_URL+"getUrbtyOfctlLttotPblancDetail",
     {
       params: {
         page: 1,
@@ -18,7 +18,7 @@ export default function getUrbtyOfctlLttotPblancDetail(): Props | any {
     }).then((response)=> {
       return {
         type: "오피스텔/도시형/민간임대 분양정보",
-        data: response.data.data.map((apt: UrbtyOfctlLttotPblancDetail) => {
+        data: response.data.data.map((apt) => {
           return {
             ...apt,
             title: apt.HOUSE_NM,
