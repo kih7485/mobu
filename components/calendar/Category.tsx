@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Paper, Button, ButtonProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { COLOR_OPTIONS } from '../../pages/api/common';
@@ -23,21 +23,32 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function Category({ types }: any) {
+    const [click, setClick] = useState(true);
+    const handleToggle = () => {
+        setClick(click => !click); // on,off 개념 boolean
+    }
     return (
         <CategoyStyle>
             {/* <Box sx={{ '& button': { m: 1 } }}> */}
-                {types.map((type: string, i:number) => { 
-                    const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
-                        color: theme.palette.getContrastText(COLOR_OPTIONS[i]),
-                        backgroundColor: COLOR_OPTIONS[i],
+            {types.map((type: string, i: number) => { 
+                const ColorButton = styled(Button)<ButtonProps>(({ theme }) => {
+                    const textColor = click ? theme.palette.getContrastText(COLOR_OPTIONS[i]) : COLOR_OPTIONS[i];
+                    const backgroundColor = click ? COLOR_OPTIONS[i] : '#FFFFFF';
+                    return ({
+                        // color: theme.palette.getContrastText(COLOR_OPTIONS[i]),
+                        color: textColor,
+                        // backgroundColor: COLOR_OPTIONS[i],
+                        backgroundColor: backgroundColor,
                         '&:hover': {
                             backgroundColor: COLOR_OPTIONS[i],
                             
                         },
-                    }));
+                    })
+                });
+                 
                     return (
                         <div key={type}>
-                            <ColorButton variant="outlined" size="large">
+                            <ColorButton variant="outlined" size="large" onClick={handleToggle}>
                                 {type}
                             </ColorButton>
                         </div>
