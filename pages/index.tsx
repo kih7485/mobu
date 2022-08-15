@@ -12,6 +12,7 @@ import RemndrLttotPblancDetail from "../types/RemndrLttotPblancDetail";
 import Category from "../components/calendar/Category";
 // import Modal from "../components/Modal"
 import estatesSubscription from './api/index';
+import useModal from "../hooks/useModal";
 
 interface Props {
   type: string,
@@ -21,6 +22,7 @@ interface Props {
 const Home: NextPage = () => { 
   const [events, setEvents] = useState<any[]>([]);  
   const [isModal, setIsModal] = useState<boolean>();
+  const { showModal } = useModal();
   const { data: aptData, isLoading: aptLoading } = useQuery(['getEstatesSubscription'], estatesSubscription);
   // const {data: aptRemindData, isLoading: remindLoading} = useQuery(['getRemndrLttotPblancDetail'], getRemndrLttotPblancDetail);
   // const {data: officetelsData, isLoading: officetelsLoading} = useQuery(['getUrbtyOfctlLttotPblancDetail'], getUrbtyOfctlLttotPblancDetail);
@@ -33,6 +35,21 @@ const Home: NextPage = () => {
       })
     })
   
+  const handleClickModal = (event : EventApi) => {
+    showModal({
+      modalType: "InformationModal",
+      modalProps: {
+        message: "Yes or No",
+        eventDef: event._def,
+        handleConfirm: () => {
+          console.log("Yes!");
+        },
+        handleClose: () => {
+          console.log("No!");
+        }
+      }
+    });
+  };
     // 클릭 시 이벤트 정보 받아옴
   const handleEventClick = (event : EventApi) => {
     console.log(event._def);
@@ -52,8 +69,23 @@ const Home: NextPage = () => {
                 setEvents([...events, { title: "additional", start: arg.start }]);
               }}
               eventClick={({ el, event }) => {
-                setIsModal(true);
-                handleEventClick(event);
+                // setIsModal(true);
+                // handleEventClick(event);
+                handleClickModal(event);
+                // showModal({
+                //   modalType: "InformationModal",
+                //   modalProps: {
+                //     message: "Yes or No",
+                //     eventDef: event._def,
+                //     handleConfirm: () => {
+                //       console.log("Yes!");
+                //     },
+                //     handleClose: () => {
+                //       console.log("No!");
+                //     }
+                //   }
+                // });
+                console.log(event);
               }}
             />
           </CalendarStyle> 

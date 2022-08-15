@@ -11,6 +11,7 @@ import {
 import '../styles/globals.css'
 import '@fullcalendar/common/main.css'
 import '@fullcalendar/daygrid/main.css'
+import GlobalModal from '../components/modal/GlobalModal';
 
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ThemeProvider theme={theme}>
           <Header/>
           <Component {...pageProps} />
+          <GlobalModal/>
         </ThemeProvider>
       </QueryClientProvider>
     </RecoilRoot>

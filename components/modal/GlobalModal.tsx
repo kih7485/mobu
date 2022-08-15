@@ -5,7 +5,7 @@ import AlertModal from "./AlertModal";
 import InformationModal from "./InformationModal";
 import { modalState } from "../../recoil/modal";
 
-export const MODAL_TYPES = {
+export const MODAL_TYPES = { 
     ConfirmModal: "ConfirmModal",
     AlertModal: "AlertModal",
     InformationModal: "InformationModal"

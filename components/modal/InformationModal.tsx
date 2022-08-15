@@ -1,29 +1,32 @@
-import React from 'react'
-import {Typography, Box, Modal} from '@mui/material';
-import useModal from '../../hooks/useModal';
+import React from "react";
 
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Button
+} from "@mui/material";
+import useModal from "../../hooks/useModal";
+import { EventApi, EventDef } from "@fullcalendar/common";
 
 export interface InformationModalProps {
-  title?: string;
-  message: string;
-  cancelText?: string;
-  confirmText?: string;
-  handleClose?: (...arg: any[]) => any;
-  handleConfirm?: (...arg: any[]) => any;
+    title?: string;
+    message: string;
+    eventDef?: EventDef;
+    handleClose?: (...arg: any[]) => any;
+    handleInformation?: (...arg: any[]) => any;
 }
-function InformationModal() {
-    const { hideModal } = useModal();
+
+const InformationModal = ({
+    title,
+    message,
+    eventDef,
+    handleClose,
+    handleInformation
+}: InformationModalProps) => {
+  const { hideModal } = useModal();
 
   const onClose = () => {
     if (handleClose) {
@@ -31,25 +34,33 @@ function InformationModal() {
     }
     hideModal();
   };
-  return ( 
-      <div>
-          <Modal
-            open
-            onClose={onClose}
-            aria-labelledby="MuiModal-modal-title"
-            aria-describedby="modal-modal-description"
-            >
-            <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-                Text in a modal
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
-            </Box>
-        </Modal>
-    </div>
-  )
-}
+
+//   const onConfirm = async () => {
+//     if (handleConfirm) {
+//       await handleConfirm();
+//     }
+//     hideModal();
+//   };
+
+  return (
+    <Dialog
+      open
+      onClose={onClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+      maxWidth="sm"
+      fullWidth
+      sx={{ whiteSpace: "break-spaces" }}
+    >
+      <DialogTitle id="confirm-dialog-title">{title}</DialogTitle>
+      <DialogContent>
+        <DialogContentText>{message}</DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        ㄴㄴㄴ
+      </DialogActions>
+    </Dialog>
+  );
+};
 
 export default InformationModal;
