@@ -6,10 +6,14 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Button
+  Button,
+  styled,
+  IconButton
 } from "@mui/material";
 import useModal from "../../hooks/useModal";
 import { EventApi, EventDef } from "@fullcalendar/common";
+import CloseIcon from '@mui/icons-material/Close';
+import SpanningTable from "../Table";
 
 export interface InformationModalProps {
     title?: string;
@@ -26,15 +30,16 @@ const InformationModal = ({
     handleClose,
     handleInformation
 }: InformationModalProps) => {
-  const { hideModal } = useModal();
-
-  const onClose = () => {
-    if (handleClose) {
-      handleClose();
-    }
-    hideModal();
-  };
-
+    const { hideModal } = useModal();
+    
+  
+    const onClose = () => {
+        if (handleClose) {
+            handleClose();
+        }
+        hideModal();
+    };
+    console.log(eventDef, "eventDef");
 //   const onConfirm = async () => {
 //     if (handleConfirm) {
 //       await handleConfirm();
@@ -53,11 +58,12 @@ const InformationModal = ({
       sx={{ whiteSpace: "break-spaces" }}
     >
       <DialogTitle id="confirm-dialog-title">{title}</DialogTitle>
-      <DialogContent>
+          <DialogContent> 
         <DialogContentText>{message}</DialogContentText>
-      </DialogContent>
+          </DialogContent>
+           <SpanningTable/>
       <DialogActions>
-        ㄴㄴㄴ
+        ㄴㄴㄴzz 
       </DialogActions>
     </Dialog>
   );

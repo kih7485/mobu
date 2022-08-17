@@ -41,12 +41,13 @@ const Home: NextPage = () => {
       modalProps: {
         message: "Yes or No",
         eventDef: event._def,
-        handleConfirm: () => {
-          console.log("Yes!");
-        },
-        handleClose: () => {
-          console.log("No!");
-        }
+        title: event._def.title,
+        // handleConfirm: () => {
+        //   console.log("Yes!");
+        // },
+        // handleClose: () => {
+        //   console.log("No!");
+        // }
       }
     });
   };
@@ -69,23 +70,8 @@ const Home: NextPage = () => {
                 setEvents([...events, { title: "additional", start: arg.start }]);
               }}
               eventClick={({ el, event }) => {
-                // setIsModal(true);
-                // handleEventClick(event);
                 handleClickModal(event);
-                // showModal({
-                //   modalType: "InformationModal",
-                //   modalProps: {
-                //     message: "Yes or No",
-                //     eventDef: event._def,
-                //     handleConfirm: () => {
-                //       console.log("Yes!");
-                //     },
-                //     handleClose: () => {
-                //       console.log("No!");
-                //     }
-                //   }
-                // });
-                console.log(event);
+                // console.log(event);
               }}
             />
           </CalendarStyle> 
