@@ -44,40 +44,33 @@ const invoiceTaxes = TAX_RATE * invoiceSubtotal;
 const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 
 export default function SpanningTable() {
-  return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="spanning table">
-        <TableHead>
-          <TableRow>
-            <TableCell>사업주체</TableCell>
-            <TableCell align="right">Qty.</TableCell>
-            <TableCell align="right">Unit</TableCell>
-            <TableCell align="right">Sum</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
+    return (
+        <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 700 }} aria-label="a dense table">
+                <TableBody>
+                    <TableRow>
+                        <TableCell width={'20%'}>공급위치</TableCell> 
+                        <TableCell align="left" >Qtyㄴㅁㄴㅇ.</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell width={'20%'}>공급규모</TableCell> 
+                        <TableCell align="left" >Qty.</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell width={'20%'}>입주자모집공고 관련 문의</TableCell> 
+                        <TableCell align="left">Qty.</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell width={'20%'}>문의처</TableCell> 
+                        <TableCell align="left">010-1234-5678</TableCell>
+                    </TableRow>
+          {/* {rows.map((row) => (
             <TableRow key={row.desc}>
               <TableCell>{row.desc}</TableCell>
               <TableCell align="right">{row.qty}</TableCell>
-              <TableCell align="right">{row.unit}</TableCell>
-              <TableCell align="right">{ccyFormat(row.price)}</TableCell>
             </TableRow>
-          ))}
-          <TableRow>
-            <TableCell rowSpan={3} />
-            <TableCell colSpan={2}>Subtotal</TableCell>
-            <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Tax</TableCell>
-            <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-            <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={2}>Total</TableCell>
-            <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
-          </TableRow>
+          ))} */}
+          
         </TableBody>
       </Table>
     </TableContainer>

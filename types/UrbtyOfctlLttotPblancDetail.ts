@@ -2,6 +2,7 @@
  * 오피스텔 / 도시형 / 민간임대 분양정보 상세조회
  * */
 export default interface UrbtyOfctlLttotPblancDetail {
+    TYPE:"OFFICETEL",
     HOUSE_MANAGE_NO: number, //주택관리번호
     PBLANC_NO: number,   //공고번호
     HOUSE_NM: string,   //주택명

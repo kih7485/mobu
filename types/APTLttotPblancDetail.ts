@@ -3,6 +3,7 @@
  * 아파트 분양정보
  */
 export default interface APTLttotPblancDetail  {
+    TYPE: "APT",
     HOUSE_MANAGE_NO: number, //주택관리번호
     PBLANC_NO: number, //공고번호
     HOUSE_NM:string, //주택명

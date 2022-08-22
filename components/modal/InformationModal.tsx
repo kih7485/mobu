@@ -14,6 +14,7 @@ import useModal from "../../hooks/useModal";
 import { EventApi, EventDef } from "@fullcalendar/common";
 import CloseIcon from '@mui/icons-material/Close';
 import SpanningTable from "../Table";
+import InfoIcon from '@mui/icons-material/Info';
 
 export interface InformationModalProps {
     title?: string;
@@ -58,10 +59,15 @@ const InformationModal = ({
       sx={{ whiteSpace: "break-spaces" }}
     >
       <DialogTitle id="confirm-dialog-title">{title}</DialogTitle>
-          <DialogContent> 
-        <DialogContentText>{message}</DialogContentText>
+          <DialogContent>
+              <DialogContentText>{message}</DialogContentText>
           </DialogContent>
-           <SpanningTable/>
+          <DialogContent>
+            <SpanningTable />
+          </DialogContent>
+           <DialogContent>
+            <span><InfoIcon /> 청약일정</span>
+          </DialogContent>
       <DialogActions>
         ㄴㄴㄴzz 
       </DialogActions>

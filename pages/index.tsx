@@ -39,8 +39,8 @@ const Home: NextPage = () => {
     showModal({
       modalType: "InformationModal",
       modalProps: {
-        message: "Yes or No",
-        eventDef: event._def,
+        message: event._def.extendedProps.HOUSE_SECD_NM,
+        eventDef: event._def, 
         title: event._def.title,
         // handleConfirm: () => {
         //   console.log("Yes!");
