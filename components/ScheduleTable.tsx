@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import APTLttotPblancDetail from '../types/APTLttotPblancDetail';
 
 const TAX_RATE = 0.07;
 
@@ -46,11 +47,53 @@ const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 export default function ScheduleTable({ ...props }) {
   const { HOUSE_SECD } : any = props;
   
-  const aptTable = (
-    <div>
-
-    </div>
-  )
+  const aptTable = () => {
+    const aptLttotPblancDetail: APTLttotPblancDetail = {
+      ...props,
+      TYPE: 'APT',
+      HOUSE_MANAGE_NO: 0,
+      PBLANC_NO: 0,
+      HOUSE_NM: '',
+      HOUSE_SECD: '',
+      HOUSE_SECD_NM: '',
+      HOUSE_DTL_SECD: '',
+      HOUSE_DTL_SECD_NM: '',
+      RENT_SECD: '',
+      RENT_SECD_NM: '',
+      SUBSCRPT_AREA_CODE: '',
+      SUBSCRPT_AREA_CODE_NM: '',
+      HSSPLY_ZIP: '',
+      HSSPLY_ADRES: '',
+      TOT_SUPLY_HSHLDCO: 0,
+      RCRIT_PBLANC_DE: '',
+      RCEPT_BGNDE: '',
+      RCEPT_ENDDE: '',
+      SPSPLY_RCEPT_BGNDE: '',
+      SPSPLY_RCEPT_ENDDE: '',
+      GNRL_RNK1_CRSPAREA_RCEPT_PD: '',
+      GNRL_RNK1_ETC_GG_RCPTDE_PD: '',
+      GNRL_RNK1_ETC_AREA_RCPTDE_PD: '',
+      GNRL_RNK2_CRSPAREA_RCEPT_PD: '',
+      GNRL_RNK2_ETC_GG_RCPTDE_PD: '',
+      GNRL_RNK2_ETC_AREA_RCPTDE_PD: '',
+      PRZWNER_PRESNATN_DE: '',
+      CNTRCT_CNCLS_BGNDE: '',
+      CNTRCT_CNCLS_ENDDE: '',
+      HMPG_ADRES: '',
+      CNSTRCT_ENTRPS_NM: '',
+      MDHS_TELNO: '',
+      BSNS_MBY_NM: '',
+      MVN_PREARNGE_YM: '',
+      SPECLT_RDN_EARTH_AT: '',
+      MDAT_TRGET_AREA_SECD: '',
+      PARCPRC_ULS_AT: '',
+      IMPRMN_BSNS_AT: '',
+      PUBLIC_HOUSE_EARTH_AT: '',
+      LRSCL_BLDLND_AT: '',
+      NPLN_PRVOPR_PUBLIC_HOUSE_AT: ''
+    };
+    aptLttotPblancDetail.GNRL_RNK1_CRSPAREA_RCEPT_PD;
+  }
 
   console.log(props,"프롭");
     return (

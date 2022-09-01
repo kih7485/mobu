@@ -71,6 +71,7 @@ const InformationModal = ({
               <DialogContentText>{message}</DialogContentText>
           </DialogContent>
           <DialogContent>
+              <span><InfoIcon /> 기본정보</span>
             <SpanningTable />
           </DialogContent>
            <DialogContent>
